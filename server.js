@@ -19,7 +19,6 @@ var hbs = exphbs.create({
         path.join(__dirname + '/views/partials/')
     ]
 });
-console.log(' WHAT IS HBS ?', hbs);
 // Register `hbs` as our view engine using its bound `engine()` function.
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
