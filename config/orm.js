@@ -14,23 +14,20 @@ const orm = function(){
   }
   function insertOne(burger) {
     return new Promise((resolve, reject) => {
-      connection.query(`INSERT INTO burgers SET ?`, burger, (err, results) => {
+      let query = connection.query(`INSERT INTO burgers SET ?`, burger, (err, results) => {
         if (err) reject(err);
 
         resolve(results);
       })
-
     })
   }
   function updateOne(burger) {
     const { burgerId } = burger;
     return new Promise((resolve, reject) => {
-      connection.query('', burgerId, (err, results) => {
+      let query = connection.query("UPDATE `burgers_db`.`burgers` SET devoured='1' WHERE id= ? ",[burger], (err, results, fields) => {
         if (err) reject(err);
-
         resolve(results);
-      })
-
+      });
     })
   }
   that.selectAll = selectAll;

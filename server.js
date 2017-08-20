@@ -4,14 +4,13 @@ const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
 const path = require('path');
 const homeRouter = require('./controllers/homeController');
+const burgerApi = require('./controllers/burgerController');
 const app = express();
 const port = process.env.PORT || 3000
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true}));
 var hbs = exphbs.create({
     defaultLayout: 'main',
-    // helpers      : helpers,
-
     // Uses multiple partials dirs, templates in "shared/templates/" are shared
     // with the client-side of the app (see below).
     partialsDir: [
@@ -26,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 // app.set('views', path.join(__dirname, '/views'));
 app.use(homeRouter);
+app.use(burgerApi);
 app.listen(port, () => {
   console.log('SERVER STARTED ON :', port);
 })

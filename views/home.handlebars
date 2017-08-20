@@ -8,27 +8,45 @@
   <section>
     <div class='row '>
       <div class="col-lg-4">
-        <div id='burgersOnDeck'>
+        <div class='burgersOnDeck'>
           {{#each burgers}}
+          {{#unless devoured}}
           <div id='burgerRow'>
-            <div class="burgerContainer col-lg-12">
-              <p>{{id}}. {{burger_name}}</p>
-              <button type='submit' class='btn btn-md btn-primary '> Devour it!</button>
+            <div class=" col-lg-12">
+              <div class="burgerContainer">
+                <p id='{{id}}'> {{id}}. {{burger_name}} {{devoured}}</p>
+                <button type='submit' class=' devourBurger btn btn-md btn-primary '> Devour it!</button>
+              </div>
             </div>
           </div>
+          {{/unless}}
           {{/each}}
         </div>
       </div>
       <!-- Devoured burger section -->
-      <div class="col-lg-4">
-
+      <div class="col-lg-4 col-lg-offset-4">
+        <div class='burgersOnDeck'>
+          {{#each burgers}}
+          {{#if devoured}}
+          <div id='burgerRow'>
+            <div class=" col-lg-12">
+              <div class="burgerContainer">
+                <p id='{{@index}}'> {{id}}. {{burger_name}} {{devoured}}</p>
+                <!-- <button type='submit' class=' devourBurger btn btn-md btn-primary '> Devour it!</button> -->
+              </div>
+            </div>
+          </div>
+          {{/if}}
+          {{/each}}
+        </div>
+      </div>
       </div>
     </div>
     <div id='burgerSubmit' class='row'>
       <div class="col-lg-4 col-lg-offset-4">
-        <form class="form-group">
+        <form action="/api/createBurger" method="POST" class="form-group">
           <label for=""></label>
-          <input type="text" class="form-control" id="" placeholder="">
+          <input type="text" class="form-control" id="" placeholder="" name="burger_name">
           <button type="submit" class="btn btn-default"> Submit</button>
         </form>
       </div>
