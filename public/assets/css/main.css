@@ -14,6 +14,34 @@ body, p, form, button{
 }
 
 footer {
+  text-align: center;
   height: 80px;
-  background-color: #444
+  background-color: #444;
+  color: #fff;
+}
+#burgersOnDeck #burgerRow{
+  /*display: inline-flex;*/
+  /*width: 100px;*/
+}
+#burgersOnDeck p {
+  margin-bottom: 10px;
+  background-color: grey;
+  padding: 20px;
+  color: #fff;
+  width: 100%;
+  margin-right: 10px;
+}
+#burgerSubmit {
+  text-align: center;
+}
+.btn {
+  height: 50px;
+  margin-top: 5px;
+}
+.burgerContainer {
+  /*width: 300px;*/
+  display: inline-flex;
+}
+.jumbotron {
+  text-align: center;
 }

@@ -12,6 +12,8 @@ if (process.env.JAWSDB_URL) {
   });
 }
 
-connection.connect();
+connection.connect(() => {
+  console.log(' CONNECTED TO DB', connection.threadId);
+});
 
 module.exports = connection;

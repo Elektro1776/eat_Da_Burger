@@ -1,20 +1,35 @@
-const connection = require('./connection')''
+const connection = require('./connection');
 
 const orm = function(){
   const that = {};
   function selectAll() {
-    connection.query(`SELECT * FROM burgers_db`, (err, results) => {
-      return results;
-    })
+      return new Promise((resolve, reject) => {
+        connection.query(`SELECT * FROM burgers`, (err, results) => {
+          if (err) reject(err);
+
+           resolve(results);
+        })
+
+      })
   }
   function insertOne(burger) {
-    connection.query(`INSERT INTO burgers SET ?`, burger, (err, results) => {
+    return new Promise((resolve, reject) => {
+      connection.query(`INSERT INTO burgers SET ?`, burger, (err, results) => {
+        if (err) reject(err);
+
+        resolve(results);
+      })
 
     })
   }
   function updateOne(burger) {
     const { burgerId } = burger;
-    connection.query('', burgerId, (err, results) => {
+    return new Promise((resolve, reject) => {
+      connection.query('', burgerId, (err, results) => {
+        if (err) reject(err);
+
+        resolve(results);
+      })
 
     })
   }
