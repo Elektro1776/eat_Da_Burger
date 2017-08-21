@@ -14,7 +14,6 @@ router.post('/api/createBurger', (req, res) => {
 })
 router.put('/api/devourBurger', (req,res) => {
   orm.updateOne(req.body.id).then((response) => {
-
     res.sendStatus(200)
   }).catch((err) => {
     res.sendStatus(500)

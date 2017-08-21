@@ -24,7 +24,7 @@ const orm = function(){
   function updateOne(burger) {
     const { burgerId } = burger;
     return new Promise((resolve, reject) => {
-      let query = connection.query("UPDATE `burgers_db`.`burgers` SET devoured='1' WHERE id= ? ",[burger], (err, results, fields) => {
+      let query = connection.query("UPDATE burgers SET devoured='1' WHERE id= ? ",[burger], (err, results, fields) => {
         if (err) reject(err);
         resolve(results);
       });
