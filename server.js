@@ -22,10 +22,10 @@ var hbs = exphbs.create({
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 app.use(express.static(path.join(__dirname, 'public')))
-
-// app.set('views', path.join(__dirname, '/views'));
+// Router Middleware 
 app.use(homeRouter);
 app.use(burgerApi);
+
 app.listen(port, () => {
   console.log('SERVER STARTED ON :', port);
 })
